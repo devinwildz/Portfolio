@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<!-- npx @tailwindcss/cli -i ./input.css -o ./output.css --watch -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saksham Gaur - Frontend Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="output.css">
+</head>
+
+<body>
+    <div class="grain-layer fixed inset-0 w-full h-full pointer-events-none z-[9999] mix-blend-normal opacity-[0.111]">
+    </div>
+    <svg style="position: absolute; width: 0; height: 0; pointer-events: none;">
+        <filter id="grainy">
+            <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="3" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+        </filter>
+    </svg>
+    <div class="w-full">
+        <!-- <div class="loader1 w-full h-screen flex items-center flex-col justify-between bg-[#1A1A1A]">
+            <div class="p-5 topHeading">
+                <h5 class="text-[#E0E0E0] reveal text-center uppercase">My Portfolio</h5>
+                <h5 class="text-[#E0E0E0] reveal text-center">Ⓒ 2025</h5>
+            </div>
+            <h5 class="text-[#E0E0E0] reveal text-5xl md:text-7xl text-center"><span>Greetings!</span> <span class="text-[#A9A9A9]">This</span> <span>is</span>
+            </h5>
+            <div class="p-5 loaderAnimation1">
+                <h5 class="text-[#E0E0E0] reveal text-center uppercase">Building Dreams with Code</h5>
+                <p class="text-[#A9A9A9] reveal text-center">DWz</p>
+            </div>
+        </div>
+        <div class="loader2 w-full h-0 absolute bottom-0 bg-stone-500"></div> -->
+        <header id="header" class=" w-full absolute top-0 z-40">
+            <div class="flex justify-between px-4 md:px-6 mt-5 items-center">
+                <h2 class="text-xl text-[#1A1A1A] font-medium">DWz <sup
+                        class="text-xl text-[#1A1A1A] font-medium">©</sup>
+                </h2>
+                <div class="flex items-center w-[50%] md:w-[50%] lg:w-[34%] gap-2 justify-end ">
+                    <div class="menu hidden md:flex w-full items-center justify-between">
+                        <div class="menu-line w-fit group flex flex-col h-6 items-center relative overflow-hidden">
+                            <a class="nav-links slide-text group-hover:-translate-y-full" href="#services">Services</a>
+                            <a class="nav-links slide-text group-hover:-translate-y-full" href="#services">Services</a>
+                        </div>
+                        <div class="menu-line w-fit group flex flex-col h-6 items-center relative overflow-hidden">
+                            <a class="nav-links slide-text group-hover:-translate-y-full " href="#project">Projects</a>
+                            <a class="nav-links slide-text group-hover:-translate-y-full" href="#project">Projects</a>
+                        </div>
+                        <div class="menu-line w-fit group flex flex-col h-6 items-center relative overflow-hidden">
+                            <a class="nav-links slide-text group-hover:-translate-y-full " href="#about">About</a>
+                            <a class="nav-links slide-text group-hover:-translate-y-full" href="#about">About</a>
+                        </div>
+                        <div class="menu-line w-fit group flex flex-col h-6 items-center relative overflow-hidden">
+                            <a class="nav-links slide-text group-hover:-translate-y-full " href="./assets/Resume.pdf"
+                                download="devin_Resume.pdf">Resume</a>
+                            <a class="nav-links slide-text group-hover:-translate-y-full" href="./assets/Resume.pdf"
+                                download="devin_Resume.pdf">Resume</a>
+                        </div>
+                        <div class="menu-line w-fit group flex flex-col h-6 items-center relative overflow-hidden">
+                            <a class="nav-links slide-text group-hover:-translate-y-full " href="#contact">Contact</a>
+                            <a class="nav-links slide-text group-hover:-translate-y-full" href="#contact">Contact</a>
+                        </div>
+                    </div>
+                    <div
+                        class="hamburger md:hidden fixed md:relative rounded-full flex flex-col items-center gap-1 justify-center cursor-pointer bg-[#BFBFB1] z-50 w-12 h-12">
+                        <span class="line1 bg-[#1A1A1A] h-0.5 w-6 transition-all duration-300 origin-center"></span>
+                        <span class="line2 bg-[#1A1A1A] h-0.5 w-6 transition-all duration-300 origin-center"></span>
+                    </div>
+                </div>
+                <div
+                    class="mobile-nav-box translate-x-full fixed top-0 right-0 flex flex-col justify-around p-5 w-full h-screen bg-[#393632] z-40 md:hidden">
+                    <div class="mobile-nav-list flex flex-col justify-center space-y-4">
+                        <div class="item item1">
+                            <a href="#services" class="text-4xl font-medium text-[#e8e8e3]">SERVICES</a>
+                        </div>
+                        <div class="item item2">
+                            <a href="#project" class="text-4xl font-medium text-[#e8e8e3]">PROJECTS</a>
+                        </div>
+                        <div class="item item3">
+                            <a href="#about" class="text-4xl font-medium text-[#e8e8e3]">ABOUT</a>
+                        </div>
+                        <div class="item item4">
+                            <a href="./assets/Resume.pdf" download="devin_Resume.pdf"
+                                class="text-4xl font-medium text-[#e8e8e3]">RESUME</a>
+                        </div>
+                        <div class="item item5">
+                            <a href="#contact" class="text-4xl font-medium text-[#e8e8e3]">CONTACT</a>
+                        </div>
+                    </div>
+                    <div class="contact-details-list flex flex-col justify-center space-y-6 mt-10">
+                        <div class="location-section">
+                            <div class="animated-div">
+                                <p class="text-[#a29e9a] text-xl">Location:</p>
+                            </div>
+                            <div class="animated-div">
+                                <span class="text-[#e8e8e3]">DehraDun, Uttrakhand</span>
+                            </div>
+                        </div>
+                        <div class="email-section">
+                            <div class="animated-div">
+                                <p class="text-[#a29e9a] text-xl">Email Address:</p>
+                            </div>
+                            <div class="animated-div">
+                                <a class="text-[#e8e8e3]"
+                                    href="mailto:sakshamgaur73@gmail.com">sakshamgaur73@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="social-media flex flex-wrap gap-4 mt-4">
+                            <a href="https://www.linkedin.com/in/saksham-gaur-83788028b" target="_blank"
+                                rel="noopener noreferrer">
+                                <i class="fa-brands fa-linkedin text-[#e8e8e3] text-xl"></i>
+                            </a>
+
+                            <a href="https://www.instagram.com/devin_wildz_" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-instagram text-[#e8e8e3] text-xl"></i>
+                            </a>
+
+                            <a href="https://www.youtube.com/@coderdevin" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-youtube text-[#e8e8e3] text-xl"></i>
+
+                            </a>
+
+                            <a href="https://github.com/devinwildz" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-github text-[#e8e8e3] text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div id="page1" class="w-full h-screen flex">
+                <div
+                    class="sticky top-0 left-0 flex flex-col justify-end md:justify-evenly w-full gap-4 px-4 py-4 md:px-5 md:pb-5 lg:px-6 md:pt-12 lg:pb-6">
+                    <div class="top-section">
+                        <div class="top-heading flex justify-between">
+                            <span
+                                class="first-heading text-[#1A1A1A] text-[14vw] md:text-[15vw]  xl:text-[12.5rem] font-medium">DEVIN</span>
+                            <span
+                                class="second-heading text-[14vw] md:text-[15vw] text-[#1A1A1A] xl:text-[12.5rem] font-medium ">WILDZ</span>
+                        </div>
+                    </div>
+                    <div class="bottom-section items-end w-full flex justify-between flex-wrap h-[75%] lg:h-full">
+                        <div class="intro w-full flex flex-col space-y-8 self-start xl:self-end md:w-[45%] lg:w-[35%] ">
+                            <div class="arrow-icon overflow-hidden hidden sm:block">
+                                <svg stroke="currentColor" fill="none" stroke-width="1.25" viewBox="6 6 12 12"
+                                    stroke-linecap="round" stroke-linejoin="round" class="m-0 size-4 p-0 md:size-6"
+                                    color="#8C8C73" style="color:#8C8C73" height="1em" width="1em"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="7" y1="7" x2="17" y2="17"></line>
+                                    <polyline points="17 7 17 17 7 17"></polyline>
+                                </svg>
+                            </div>
+                            <div class="intro-text">
+                                <p class="text-[#6b645c] overflow-hidden text-xl">
+                                    I help growing brands and ambitious startups build premium, results-driven websites
+                                    that
+                                    not only look stunning but also deliver real business impact.
+                                </p>
+                            </div>
+                            <div class="button-clip-wrapper h-12 overflow-hidden">
+                                <a href="mailto:sakshamgaur73@gmail.com" class="inline-block">
+                                    <button
+                                        class="relative  bg-[#393632] cursor-pointer px-6 py-2 rounded-full overflow-hidden group flex items-center gap-2">
+                                        <div
+                                            class="absolute inset-0 bg-[#8c8c73] rounded-full translate-y-full group-hover:translate-y-0 transition-all duration-500 ease-in-out z-0">
+                                        </div>
+                                        <div class="relative h-[28px] overflow-hidden">
+                                            <div
+                                                class="flex items-center gap-2 transition-transform duration-500 ease-in-out group-hover:-translate-y-full">
+                                                <span class="text-[#E8E8E3] text-lg font-medium">Let's
+                                                    Connect</span>
+                                                <svg stroke="currentColor" fill="none" stroke-width="2"
+                                                    viewBox="6 6 12 12" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="size-2.5 md:size-3  text-[#E8E8E3]"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <line x1="7" y1="7" x2="17" y2="17"></line>
+                                                    <polyline points="17 7 17 17 7 17"></polyline>
+                                                </svg>
+                                            </div>
+                                            <div
+                                                class="absolute top-full left-0 flex items-center gap-2 w-full transition-all duration-500 ease-in-out group-hover:top-0">
+                                                <span class="text-[#E8E8E3] text-lg font-medium">Let's
+                                                    Connect
+                                                </span>
+                                                <svg stroke="currentColor" fill="none" stroke-width="2"
+                                                    viewBox="6 6 12 12" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="size-4 md:size-3 text-[#E8E8E3]"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <line x1="7" y1="7" x2="17" y2="17"></line>
+                                                    <polyline points="17 7 17 17 7 17"></polyline>
+                                                </svg>
+                                            </div>
+
+                                        </div>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div
+                            class="pfpImage w-1/2 md:w-[50%] lg:w-[31%] xl:w-[20%] h-[50%] md:h-auto lg:h-[70%] xl:h-full">
+                            <img class="w-full h-full object-cover cursor-pointer" src="./assets/homeImg.webp"
+                                alt="image">
+                        </div>
+                        <div class="work-details w-[50%] md:w-full lg:w-1/3">
+                            <div class="work-status overflow-hidden">
+                                <p class="text-[#6b645c] uppercase text-sm md:text-lg text-right">
+                                    Available for work
+                                </p>
+                            </div>
+                            <div class="joined_year text-right overflow-hidden">
+                                <span
+                                    class="text-4xl md:text-6xl lg:text-7xl uppercase font-medium text-[#1A1A1A] ">July'25</span>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="page2" class="w-full">
+                <div
+                    class="page2Child bg-[#1A1A1A] min-h-screen relative z-[5] rounded-tr-4xl rounded-tl-4xl px-4 py-8 md:px-5 lg:px-6 md:py-10">
+                    <div class="animateHeadingPg2">
+                        <h2 class="text-[15vw] md:text-8xl xl:text-9xl font-medium text-[#e8e8e3] uppercase">
+                            What I
+                            Do /
+                        </h2>
+                    </div>
+                    <div id="services"
+                        class="serviText flex w-full flex-col md:flex-row justify-end items-baseline gap-5 md:gap-12 py-8 md:py-11 ">
+                        <p class="para text-[#d1d1c7] text-[20px] md:text-lg uppercase">( Skills / Services )
+                        </p>
+                        <div class="serviText2 w-full md:w-[43%] ">
+                            <p class="text-[#a29e9a] text-xl lg:text-2xl">
+                                Looking for a modern website that actually reflects your brand? I help individuals and
+                                businesses build fast, visually stunning websites that leave a lasting impact.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="services relative ">
+                        <div
+                            class="services-box box1 flex flex-col justify-between items-start border-t border-[#7e766c] bg-[#1A1A1A] py-10">
+                            <div
+                                class="main-services-box flex flex-col gap-3 md:gap-0 md:flex-row justify-between w-full items-baseline">
+                                <div class="serial-no hidden md:block md:w-[30%]">
+                                    <h2 class="text-3xl md:text-5xl text-[#d1d1c7] font-semibold">(01)</h2>
+                                </div>
+                                <div
+                                    class="flex md:w-[70%] lg:w-[65%] xl:w-[60%] 2xl:w-[56%] justify-between items-baseline ">
+                                    <div class="xl:w-[90%]">
+                                        <div class="title">
+                                            <h2 class="text-3xl md:text-5xl mb-10 text-[#d1d1c7] font-semibold">
+                                                Frontend Development
+                                            </h2>
+                                        </div>
+                                        <div class="main-services-box2-child ">
+                                            <p class="text-[#a29e9a] text-xl w-full md:w-full xl:w-[70%]">
+                                                I design clean, responsive websites using modern frontend
+                                                technologies. Whether
+                                                it’s
+                                                HTML/CSS or React.js, I focus on smooth user experience, interactive
+                                                layouts,
+                                                and
+                                                mobile-first design
+                                            </p>
+                                            <div class="list py-5">
+                                                <div
+                                                    class="listItem text-2xl md:text-3xl lg:text-4xl text-[#a29e9a] font-medium flex items-center py-4 gap-6 border-b border-b-[$a29e9a]">
+                                                    <span class="text-2xl text-[#7e766c]">01</span>
+                                                    HTML, CSS, JavaScript
+                                                </div>
+                                                <div
+                                                    class="listItem text-2xl md:text-3xl lg:text-4xl text-[#a29e9a] font-medium flex items-center py-4 gap-6 border-b border-b-[$a29e9a]">
+                                                    <span class="text-2xl text-[#7e766c]">02</span>
+                                                    Responsive Layouts
+                                                </div>
+                                                <div
+                                                    class="listItem text-2xl md:text-3xl lg:text-4xl text-[#a29e9a] font-medium flex items-center py-4 gap-6 ">
+                                                    <span class="text-2xl text-[#7e766c]">03</span>
+                                                    Interactive UI Designs
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="icon hidden xl:w-[5%] 2xl:w-[2%] xl:block">
+                                        <img class="xl:w-full"
+                                            src="https://images.ctfassets.net/fwy0yv14lkat/3OTKoEZctLHsU75qKdenDH/a241fd9d6e8c8f0622811fe2bed44b87/Shape.svg" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div
+                            class="services-box box2 flex flex-col justify-between items-start border-t border-[#7e766c] bg-[#1A1A1A] py-10">
+                            <div
+                                class="main-services-box flex flex-col gap-3 md:gap-0 md:flex-row justify-between w-full items-baseline">
+                                <div class="serial-no hidden md:block md:w-[30%]">
+                                    <h2 class="text-3xl md:text-5xl text-[#d1d1c7] font-semibold">(02)</h2>
+                                </div>
+                                <div
+                                    class="flex md:w-[70%] lg:w-[65%] xl:w-[60%] justify-between 2xl:w-[56%] items-baseline ">
+                                    <div class="xl:w-[90%]">
+                                        <div class="title">
+                                            <h2 class="text-3xl md:text-5xl mb-10 text-[#d1d1c7] font-semibold">
+                                                Frameworks / Libraries
+                                            </h2>
+                                        </div>
+                                        <div class="main-services-box2-child ">
+                                            <p class="text-[#a29e9a] text-xl w-full md:w-full xl:w-[70%]">
+                                                From page transitions to scroll-based animations, I bring interfaces to
+                                                life using
+                                                modern animation libraries. I specialize in creating immersive
+                                                experiences that
+                                                engage users without compromising performance.
+                                            </p>
+                                            <div class="list py-5">
+                                                <div
+                                                    class="listItem text-2xl md:text-3xl lg:text-4xl text-[#a29e9a] font-medium flex items-center py-4 gap-6 border-b border-b-[$a29e9a]">
+                                                    <span class="text-2xl text-[#7e766c]">01</span>
+                                                    React Js, Bootstrap
+                                                </div>
+                                                <div
+                                                    class="listItem text-2xl md:text-3xl lg:text-4xl text-[#a29e9a] font-medium flex items-center py-4 gap-6 border-b border-b-[$a29e9a]">
+                                                    <span class="text-2xl text-[#7e766c]">02</span>
+                                                    Tailwind CSS, GSAP
+                                                </div>
+                                                <div
+                                                    class="listItem text-2xl md:text-3xl lg:text-4xl text-[#a29e9a] font-medium flex items-center py-4 gap-6 ">
+                                                    <span class="text-2xl text-[#7e766c]">03</span>
+                                                    Locomotive, Lenis
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="icon hidden xl:w-[5%] 2xl:w-[2%] xl:block">
+                                        <img class="xl:w-full"
+                                            src="https://images.ctfassets.net/fwy0yv14lkat/3OTKoEZctLHsU75qKdenDH/a241fd9d6e8c8f0622811fe2bed44b87/Shape.svg" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div
+                            class="services-box box3 flex flex-col justify-between items-start border-t border-[#7e766c] bg-[#1A1A1A] py-10">
+                            <div
+                                class="main-services-box flex flex-col gap-3 md:gap-0 md:flex-row justify-between w-full items-baseline">
+                                <div class="serial-no hidden md:block md:w-[30%]">
+                                    <h2 class="text-3xl md:text-5xl text-[#d1d1c7] font-semibold">(03)</h2>
+                                </div>
+                                <div
+                                    class="flex md:w-[70%] justify-between lg:w-[65%] xl:w-[60%] 2xl:w-[56%] items-baseline ">
+                                    <div class="xl:w-[90%]">
+                                        <div class="title">
+                                            <h2 class="text-3xl md:text-5xl mb-10 text-[#d1d1c7] font-semibold">
+                                                WP Development
+                                            </h2>
+                                        </div>
+                                        <div class="main-services-box2-child ">
+                                            <p class="text-[#a29e9a] text-xl w-full md:w-full xl:w-[70%]">
+                                                I build custom WordPress websites that blend performance with modern
+                                                design. Whether
+                                                it’s theme development, Elementor customization, or ACF-based dynamic
+                                                content, I
+                                                ensure everything is tailored to client needs—with motion
+                                                to keep users engaged.
+                                            </p>
+                                            <div class="list py-5">
+                                                <div
+                                                    class="listItem text-2xl md:text-3xl lg:text-4xl text-[#a29e9a] font-medium flex items-center py-4 gap-6 border-b border-b-[$a29e9a]">
+                                                    <span class="text-2xl text-[#7e766c]">01</span>
+                                                    Theme Development
+                                                </div>
+                                                <div
+                                                    class="listItem text-2xl md:text-3xl lg:text-4xl text-[#a29e9a] font-medium flex items-center py-4 gap-6 border-b border-b-[$a29e9a]">
+                                                    <span class="text-2xl text-[#7e766c]">02</span>
+                                                    Elementor / Elementor Pro
+                                                </div>
+                                                <div
+                                                    class="listItem text-2xl md:text-3xl lg:text-4xl text-[#a29e9a] font-medium flex items-center py-4 gap-6 ">
+                                                    <span class="text-2xl text-[#7e766c]">03</span>
+                                                    ACF & GSAP Integration
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="icon hidden xl:w-[5%] 2xl:w-[2%] xl:block">
+                                        <img class="xl:w-full"
+                                            src="https://images.ctfassets.net/fwy0yv14lkat/3OTKoEZctLHsU75qKdenDH/a241fd9d6e8c8f0622811fe2bed44b87/Shape.svg" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="project" class="works">
+                        <div class="animateHeadingPg3">
+                            <p class="text-[15vw] md:text-8xl xl:text-9xl mb-4 font-medium text-[#e8e8e3] uppercase">
+                                Selected </p>
+                            <p class="text-[15vw] md:text-8xl xl:text-9xl font-medium text-[#e8e8e3] uppercase">Works /
+                                <sup class="text-[#555]">(5)</sup>
+                            </p>
+                        </div>
+                        <div
+                            class="projectText flex w-full flex-col md:flex-row justify-end items-baseline gap-5 md:gap-12 py-8 md:py-11 ">
+                            <p class="Projectpara text-[#d1d1c7] text-[20px] md:text-lg uppercase">( Projects / Works )
+                            </p>
+                            <div class="ProjectText2 w-full md:w-[43%] ">
+                                <p class="text-[#a29e9a] text-xl lg:text-2xl">
+                                    Each project showcased here is the result of thoughtful design and
+                                    development—crafted
+                                    with adeep focus on performance, user experience.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+        integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"
+        integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"
+        integrity="sha512-wOeEC+9qERAzhliwBFPDb6t8TiFFxdxG8vhK/Ygs7TuC44bpg8pg/X2/U/u+0X4fK05wb9id1EIipnF02+CFQw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollToPlugin.min.js"
+        integrity="sha512-kz526itdNcpyMs18TLPOhsnIeOIO1JywWKbbF77zR+ZKpZ4gwubXhwaURHpt5Se9AAqSK2j8ID0LnfXsB2Jkjg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

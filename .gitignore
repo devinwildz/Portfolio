@@ -1,0 +1,15 @@
+# Node modules (never push this)
+node_modules/
+
+# Output CSS (auto-generated from Tailwind/PostCSS)
+output.css
+
+# VSCode settings (optional)
+.vscode/
+
+# OS-specific junk
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log

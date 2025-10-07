@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    
+    "tailwindcss": "^4.1.11"
+  },
+  "scripts": {
+    "start": "tailwindcss -i input.css -o output.css --watch"
+  }
+}
