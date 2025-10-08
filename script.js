@@ -70,19 +70,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     //Home Pg pin animation
-    gsap.to("#page1", {
-        y: 50,
-        opacity: 0,
-        scrollTrigger: {
-            trigger: "#page1",
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-            pin: true,
-            pinSpacing: false,
-            anticipatePin: 2,
-        }
-    });
+    // gsap.to("#page1", {
+    //     y: 50,
+    //     opacity: 0,
+    //     scrollTrigger: {
+    //         trigger: "#page1",
+    //         start: "top top",
+    //         end: "bottom top",
+    //         scrub: true,
+    //         pin: true,
+    //         pinSpacing: false,
+    //         // anticipatePin: 2,
+    //         markers:true,
+    //     }
+    // });
 
     //menus animations
     const hamburger = document.querySelector(".hamburger");
