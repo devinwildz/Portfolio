@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- npx @tailwindcss/cli -i ./input.css -o ./output.css --watch -->
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -133,7 +134,7 @@
             </div>
         </header>
         <main>
-            <div id="page1" class="w-full h-screen flex">
+            <div id="page1" class="w-full min-h-screen flex">
                 <div
                     class="sticky top-0 left-0 flex flex-col justify-end md:justify-evenly w-full gap-4 px-4 py-4 md:px-5 md:pb-5 lg:px-6 md:pt-12 lg:pb-6">
                     <div class="top-section">
@@ -144,7 +145,7 @@
                                 class="second-heading text-[14vw] md:text-[15vw] text-[#1A1A1A] xl:text-[12.5rem] font-medium ">WILDZ</span>
                         </div>
                     </div>
-                    <div class="bottom-section items-end w-full flex justify-between flex-wrap h-[75%] lg:h-full">
+                    <div class="bottom-section items-end w-full flex justify-between flex-wrap min-h-[70%] lg:h-full">
                         <div class="intro w-full flex flex-col space-y-8 self-start xl:self-end md:w-[45%] lg:w-[35%] ">
                             <div class="arrow-icon overflow-hidden hidden sm:block">
                                 <svg stroke="currentColor" fill="none" stroke-width="1.25" viewBox="6 6 12 12"
@@ -195,7 +196,6 @@
                                                     <polyline points="17 7 17 17 7 17"></polyline>
                                                 </svg>
                                             </div>
-
                                         </div>
                                     </button>
                                 </a>
@@ -215,7 +215,6 @@
                             <div class="joined_year text-right overflow-hidden">
                                 <span
                                     class="text-4xl md:text-6xl lg:text-7xl uppercase font-medium text-[#1A1A1A] ">July'25</span>
-
                             </div>
                         </div>
 
@@ -400,7 +399,7 @@
 
                         </div>
                     </div>
-                    <div id="project" class="works">
+                    <div id="project" class="works pt-8">
                         <div class="animateHeadingPg3">
                             <p class="text-[15vw] md:text-8xl xl:text-9xl mb-4 font-medium text-[#e8e8e3] uppercase">
                                 Selected </p>
@@ -418,6 +417,103 @@
                                     development—crafted
                                     with adeep focus on performance, user experience.
                                 </p>
+                            </div>
+                        </div>
+                        <div class="Allprojects w-full">
+                            <div id="gg" class="Project flex h-full justify-between items-start">
+                                <div
+                                    class="hidden number-counter relative text-[20vw] h-fit overflow-hidden md:flex text-[#a29e9a] leading-[1] w-[40%]">
+                                    <span class="number-static relative">0</span>
+                                    <div class="number-animated-wrapper relative">
+                                        <div class="number-animated absolute flex flex-col h-full w-fit leading-[1]">
+                                            <span class="inline-block">1.</span>
+                                            <span class="inline-block">2.</span>
+                                            <span class="inline-block">3.</span>
+                                            <span class="inline-block">4.</span>
+                                            <span class="inline-block">5.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="projectList w-full md:w-[60%] 2xl:w-[56%] flex flex-col">
+                                    <div class="project-detail md:mb-14 border-b border-[#7e766c] mb-8 pb-8 md:pb-12">
+                                        <div class="projectImg relative overflow-hidden group">
+                                            <img src="./assets/project1.jpeg" class="w-full h-full object-cover" alt="">
+                                            <div
+                                                class="overlay absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                                            </div>
+                                            <div
+                                                class="btn-magnetic absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 scale-0 group-hover:scale-100 transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] z-20">
+                                                <a target="_blank" href="https://doctorsbookings.netlify.app/"
+                                                    rel="noopener noreferrer">
+                                                    <button
+                                                        class="bg-white w-20 h-20 rounded-full shadow-lg cursor-pointer">
+                                                        View
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="project-category py-3.5 text-[#a29e9a] text-xl ">
+                                            <span>React JS, Tailwind CSS</span>
+                                        </div>
+                                        <div
+                                            class="projectName flex flex-col xl:flex-row justify-between items-start space-y-5 xl:space-y-0 xl:items-center">
+                                            <h1 class="text-[#d1d1c7] text-3xl md:text-4xl font-medium">
+                                                Doctors
+                                                Appointment
+                                            </h1>
+                                            <div class="projectTags w-full xl:w-auto flex space-x-3">
+
+                                                <a class="border hover:bg-[#bfbfb1] transition-all duration-300 hover:text-[#1A1A1A] border-[#d1d1c7] text-[#d1d1c7] rounded-2xl text-sm px-2.5 py-2"
+                                                    href="https://github.com/devinwildz/clinic-booking-ui"
+                                                    target="_blank" rel="noopener noreferrer">Git Repo</a>
+                                                <span
+                                                    class="border border-[#d1d1c7] text-[#d1d1c7] rounded-2xl text-sm px-2.5 py-2">Project</span>
+                                                <span
+                                                    class="border border-[#d1d1c7] text-[#1A1A1A] bg-[#bfbfb1] rounded-2xl text-sm px-2.5 py-2">2024</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="project-detail md:mb-14 border-b border-[#7e766c] mb-8 pb-8 md:pb-12">
+                                        <div class="projectImg relative overflow-hidden group">
+                                            <img src="./assets/Project2.jpeg" class="w-full h-full object-cover" alt="">
+                                            <div
+                                                class="overlay absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                                            </div>
+                                            <div
+                                                class="btn-magnetic absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 scale-0 group-hover:scale-100 transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] z-20">
+                                                <a href="https://admin-reactdashboard.netlify.app/" target="_blank"
+                                                    rel="noopener noreferrer">
+                                                    <button
+                                                        class="bg-white w-20 h-20 rounded-full shadow-lg cursor-pointer">
+                                                        View
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="project-category py-3.5 text-[#a29e9a] text-xl">
+                                            <span>React JS, Tailwind CSS</span>
+                                        </div>
+                                        <div
+                                            class="projectName flex flex-col xl:flex-row justify-between items-start space-y-5 xl:space-y-0 xl:items-center">
+                                            <h1 class="text-[#d1d1c7] text-3xl md:text-4xl font-medium">
+                                                Admin Dashboard
+                                            </h1>
+                                            <div class="projectTags w-full xl:w-auto flex space-x-3">
+                                                <a class="border hover:bg-[#bfbfb1] transition-all duration-300 hover:text-[#1A1A1A] border-[#d1d1c7] text-[#d1d1c7] rounded-2xl text-sm px-2.5 py-2"
+                                                    href="https://github.com/devinwildz/admin-dashboard" target="_blank"
+                                                    rel="noopener noreferrer">Git Repo</a>
+                                                <span
+                                                    class="border border-[#d1d1c7] text-[#d1d1c7] rounded-2xl text-sm px-2.5 py-2">Project</span>
+                                                <span
+                                                    class="border border-[#d1d1c7] text-[#1A1A1A] bg-[#bfbfb1] rounded-2xl text-sm px-2.5 py-2">2024</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
