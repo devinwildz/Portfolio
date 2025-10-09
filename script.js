@@ -309,19 +309,5 @@ document.addEventListener('DOMContentLoaded', function () {
     //     });
     // }
 
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
 });
 
