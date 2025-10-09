@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function () {
             pin: true,
             pinSpacing: false,
             anticipatePin: 2,
-            markers:true,
         }
     });
 
@@ -166,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
             tl0.reverse();
         }
     });
-
+    
     document.querySelectorAll('.mobile-nav-list .item a').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -213,10 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-
-
     const tl2 = gsap.timeline();
-
     let Split = new SplitText(".top-heading span", {
         type: "chars", mask: "chars", autoSplit: true,
     });

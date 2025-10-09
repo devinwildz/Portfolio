@@ -24,6 +24,8 @@ html.lenis body {
     transition-behavior: allow-discrete;
 }
 
+
+
 body {
     font-family: 'Outfit', sans-serif;
     width: 100%;
@@ -59,6 +61,9 @@ body {
 .joined_year span {
     display: inline-block;
     line-height: 1;
+    font-kerning: none;
+    text-rendering: optimizeSpeed;
+
 }
 
 .pfpImage img {
