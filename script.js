@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     gsap.registerPlugin(SplitText, ScrollTrigger, ScrollToPlugin);
 
-
     function revealSpan() {
         document.querySelectorAll('.reveal').forEach((elem) => {
             let parent = document.createElement("span");
@@ -28,45 +27,37 @@ document.addEventListener('DOMContentLoaded', function () {
             elem.appendChild(parent);
         });
     }
-
     revealSpan();
+
     // Add any additional functionality or animations here  
+    let tl = gsap.timeline();
 
-    // let tl = gsap.timeline();
+    tl.from(".child span", {
+        opacity: 0,
+        x: "100",
+        duration: 2,
+        stagger: 0.2,
+        delay: 1,
+        ease: "Power3.easeInOut",
+    });
 
-    // tl.from(".child span", {
-    //     opacity: 0,
-    //     x: "100",
-    //     duration: 2,
-    //     stagger: 0.2,
-    //     delay: 1,
-    //     ease: "Power3.easeInOut",
-    // });
+    tl.to(".parent .child", {
+        y: "-100%",
+        duration: 1,
+        ease: "Circ.easeInOut",
+    });
 
-    // tl.to(".parent .child", {
-    //     y: "-100%",
-    //     duration: 1,
-    //     ease: "Circ.easeInOut",
-    // });
+    tl.to(".loader1", {
+        height: "0",
+        duration: 1,
+        ease: "Power3.easeInOut",
+    },"-=0.5");
 
-    // tl.to(".loader1", {
-    //     height: "0",
-    //     duration: 1,
-    //     ease: "Power3.easeInOut",
-    // },"-=0.5");
-
-    // tl.to(".loader2", {
-    //     height: "100%",
-    //     duration:1,
-    //     delay:-0.1,
-    //     ease: "Power3.easeInOut",
-    // },"-=1");
-
-    // tl.to(".home", {
-    //     height: "100%",
-    //     duration: 1,
-    //     ease: "Power3.easeInOut",
-    // }, "-=0.7");
+    tl.to(".home", {
+        height: "100%",
+        duration: 1,
+        ease: "Power3.easeInOut",
+    }, "-=0.7");
 
 
     //Home Pg pin animation
@@ -212,111 +203,111 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    const tl2 = gsap.timeline();
-    let Split = new SplitText(".top-heading span", {
-        type: "chars", mask: "chars", autoSplit: true,
-    });
+    // const tl2 = gsap.timeline();
+    // let Split = new SplitText(".top-heading span", {
+    //     type: "chars", mask: "chars", autoSplit: true,
+    // });
 
-    tl2.from(Split.chars, {
-        yPercent: 100,
-        autoAlpha: 0,
-        stagger: 0.09,
-        duration: 1,
-        ease: "power3.out",
+    // tl2.from(Split.chars, {
+    //     yPercent: 100,
+    //     autoAlpha: 0,
+    //     stagger: 0.09,
+    //     duration: 1,
+    //     ease: "power3.out",
 
-    })
+    // })
 
-    let Split2 = new SplitText(".intro-text p, .work-status p, .joined_year span ", {
-        type: "lines", mask: "lines", autoSplit: true,
-    })
+    // let Split2 = new SplitText(".intro-text p, .work-status p, .joined_year span ", {
+    //     type: "lines", mask: "lines", autoSplit: true,
+    // })
 
-    tl2.from(Split2.lines, {
-        yPercent: 100,
-        autoAlpha: 0,
-        stagger: 0.08,
-        duration: 1,
-        ease: "power3.out",
-        // onComplete: () => {
-        //     Split2.revert();
-        // }
-    }, "0.5")
+    // tl2.from(Split2.lines, {
+    //     yPercent: 100,
+    //     autoAlpha: 0,
+    //     stagger: 0.08,
+    //     duration: 1,
+    //     ease: "power3.out",
+    //     // onComplete: () => {
+    //     //     Split2.revert();
+    //     // }
+    // }, "0.5")
 
-    tl2.from(".button-clip-wrapper button", {
-        y: 50,
-        opacity: 0,
-        autoAlpha: 0,
-        duration: 1,
-        ease: "power3.out",
-    }, "0.5");
+    // tl2.from(".button-clip-wrapper button", {
+    //     y: 50,
+    //     opacity: 0,
+    //     autoAlpha: 0,
+    //     duration: 1,
+    //     ease: "power3.out",
+    // }, "0.5");
 
-    tl2.from(".pfpImage img", {
-        scale: 0,
-        opacity: 0,
-        autoAlpha: 0,
-        duration: 1,
-        ease: "power4.out",
-    }, "0.5");
+    // tl2.from(".pfpImage img", {
+    //     scale: 0,
+    //     opacity: 0,
+    //     autoAlpha: 0,
+    //     duration: 1,
+    //     ease: "power4.out",
+    // }, "0.5");
 
 
 
-    let Split3 = new SplitText(".animateHeadingPg2 h2 ", {
-        type: "chars", mask: "chars", autoSplit: true,
-    })
+    // let Split3 = new SplitText(".animateHeadingPg2 h2 ", {
+    //     type: "chars", mask: "chars", autoSplit: true,
+    // })
 
-    gsap.from(Split3.chars, {
-        yPercent: 100,
-        autoAlpha: 0,
-        stagger: 0.08,
-        duration: 1,
-        ease: "power4.out",
-        scrollTrigger: {
-            trigger: ".animateHeadingPg2",
-            start: "top 50%",
-            end: "bottom 60%",
-        },
-    })
+    // gsap.from(Split3.chars, {
+    //     yPercent: 100,
+    //     autoAlpha: 0,
+    //     stagger: 0.08,
+    //     duration: 1,
+    //     ease: "power4.out",
+    //     scrollTrigger: {
+    //         trigger: ".animateHeadingPg2",
+    //         start: "top 50%",
+    //         end: "bottom 60%",
+    //     },
+    // })
 
-    let Split4 = new SplitText(".serviText2 p", {
-        type: "lines", linesClass: "line", mask: "lines", autoSplit: true,
-        onSplit: (self) => {
-            return gsap.from(self.lines, {
-                yPercent: 40,
-                autoAlpha: 0,
-                stagger: 0.08,
-                duration: 1,
-                ease: "power4.out",
-                scrollTrigger: {
-                    trigger: ".page2Child",
-                    start: "top 50%",
-                    end: "bottom 60%",
-                },
-                // onComplete: () => {
-                //     self.revert()
-                // }
-            })
-        }
-    })
+    // let Split4 = new SplitText(".serviText2 p", {
+    //     type: "lines", linesClass: "line", mask: "lines", autoSplit: true,
+    //     onSplit: (self) => {
+    //         return gsap.from(self.lines, {
+    //             yPercent: 40,
+    //             autoAlpha: 0,
+    //             stagger: 0.08,
+    //             duration: 1,
+    //             ease: "power4.out",
+    //             scrollTrigger: {
+    //                 trigger: ".page2Child",
+    //                 start: "top 50%",
+    //                 end: "bottom 60%",
+    //             },
+    //             // onComplete: () => {
+    //             //     self.revert()
+    //             // }
+    //         })
+    //     }
+    // })
 
 
     //Services Pin section
-    function setupPins(pinConfigs) {
-        pinConfigs.forEach(({ selector, start, end, pinSpacing, markers = false }) => {
-            gsap.to(selector, {
-                scrollTrigger: {
-                    trigger: selector,
-                    id: `pin-${selector.replace('.', '')}`,
-                    start,
-                    end,
-                    endTrigger: ".box3",
-                    pin: true,
-                    pinSpacing,
-                    markers,
-                },
-                duration: 1,
-                ease: "power3.out",
-            });
-        });
-    }
+    // function setupPins(pinConfigs) {
+    //     pinConfigs.forEach(({ selector, start, end, pinSpacing, markers = false }) => {
+    //         gsap.to(selector, {
+    //             scrollTrigger: {
+    //                 trigger: selector,
+    //                 id: `pin-${selector.replace('.', '')}`,
+    //                 start,
+    //                 end,
+    //                 endTrigger: ".box3",
+    //                 pin: true,
+    //                 pinSpacing,
+    //                 markers,
+    //             },
+    //             duration: 1,
+    //             ease: "power3.out",
+    //         });
+    //     });
+    // }
 
 
 
