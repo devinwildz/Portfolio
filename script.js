@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
         opacity: 0,
         scrollTrigger: {
             trigger: "#page1",
-            start: "40% 40%",
+            start: "top top",
             end: "bottom top",
             scrub: true,
             pin: true,
