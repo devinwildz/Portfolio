@@ -75,8 +75,10 @@ document.addEventListener('DOMContentLoaded', function () {
             pin: true,
             pinSpacing: false,
             anticipatePin: 2,
+            invalidateOnRefresh: true,
         }
     });
+
 
     //menus animations
     const hamburger = document.querySelector(".hamburger");
