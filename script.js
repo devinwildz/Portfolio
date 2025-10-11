@@ -69,12 +69,13 @@ document.addEventListener('DOMContentLoaded', function () {
         opacity: 0,
         scrollTrigger: {
             trigger: "#page1",
-            start: "top top",
+            start: "40% 40%",
             end: "bottom top",
             scrub: true,
             pin: true,
             pinSpacing: false,
             anticipatePin: 2,
+            markers:true,
         }
     });
 
