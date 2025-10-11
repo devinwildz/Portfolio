@@ -51,6 +51,9 @@ document.addEventListener('DOMContentLoaded', function () {
         height: "0",
         duration: 1,
         ease: "Power3.easeInOut",
+        onComplete: () => {
+        document.querySelector(".loader1").style.display = "none";
+    }
     },"-=0.5");
 
     tl.to(".home", {
