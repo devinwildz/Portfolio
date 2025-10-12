@@ -201,10 +201,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-
-
-
-
     function AnimateSplitTextScroll({
         elem,                // element selector, e.g. ".heading"
         triggerElem,
@@ -345,12 +341,117 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 
 
+    //card Stack Animation
+    function setupPins(pinConfigs) {
+        pinConfigs.forEach(({ selector, start, end, pinSpacing, markers = false }) => {
+            gsap.to(selector, {
+                scrollTrigger: {
+                    trigger: selector,
+                    id: `pin-${selector.replace('.', '')}`,
+                    start,
+                    end,
+                    endTrigger: ".box3",
+                    pin: true,
+                    pinSpacing,
+                    markers,
+                },
+                duration: 1,
+                ease: "power3.out",
+            });
+        });
+    }
 
+    setupPins([
+        { selector: ".box1", start: "top 50px", end: "10% 20%", pinSpacing: false },
+        { selector: ".box2", start: "top 150px", end: "10% 20%", pinSpacing: false },
+        { selector: ".box3", start: "top 250px", end: "10% 20%", pinSpacing: true },
+    ]);
 
+    //cursor Follower
 
+    const containers = document.querySelectorAll(".projectImg");
+    containers.forEach(container => {
+        const button = container.querySelector(".btn-magnetic button");
 
+        if (!button) return; // safety check
 
+        gsap.set(button, { opacity: 0, scale: 0.8 });
 
+        container.addEventListener("mousemove", (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            gsap.to(button, {
+                x: x * 0.2,
+                y: y * 0.2,
+                scale: 1.05,
+                ease: "power2.out",
+                duration: 0.3,
+            });
+        });
+
+        container.addEventListener("mouseenter", () => {
+            gsap.to(button, {
+                opacity: 1,
+                scale: 1,
+                rotate: "0deg",
+                ease: "power3.out",
+                duration: 0.9,
+            });
+        });
+
+        container.addEventListener("mouseleave", () => {
+            gsap.to(button, {
+                x: 0,
+                y: 0,
+                scale: 1,
+                opacity: 1,
+                rotate: "60deg",
+                ease: "power3.out",
+                duration: 1,
+            });
+        });
+    });
+
+    //date
+    const yearSpan = document.getElementById("current-year");
+    yearSpan.textContent = new Date().getFullYear();
+
+    //about section
+
+    function animateAboutSection(trigger, start, end, markers = false) {
+        gsap.to(".aboutme", {
+            y: -50,
+            scale: 0.99,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger,
+                start,
+                end,
+                markers,
+                scrub: 1,
+            }
+        });
+    }
+    animateAboutSection(".aboutme", "bottom 80%", "bottom 70%");
+
+    gsap.fromTo(".footer1",
+        { y: -100 }, // 👈 start: thoda upar se
+        {
+            y: 0, // 👇 end: apni jagah pe aa jaye
+            duration: 2,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".footer1",
+                start: "top 80%",
+                end: "bottom 60%",
+                scrub: 1,
+                markers: true,
+            },
+        }
+    );
 
 
 
