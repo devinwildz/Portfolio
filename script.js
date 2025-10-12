@@ -52,16 +52,9 @@ document.addEventListener('DOMContentLoaded', function () {
         duration: 1,
         ease: "Power3.easeInOut",
         onComplete: () => {
-        document.querySelector(".loader1").style.display = "none";
-    }
-    },"-=0.5");
-
-    tl.to(".home", {
-        height: "100%",
-        duration: 1,
-        ease: "Power3.easeInOut",
-    }, "-=0.7");
-
+            document.querySelector(".loader1").style.display = "none";
+        }
+    }, "-=0.5");
 
     //Home Pg pin animation
     gsap.to("#page1", {
@@ -161,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
             tl0.reverse();
         }
     });
-    
+
     document.querySelectorAll('.mobile-nav-list .item a').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -208,111 +201,159 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // const tl2 = gsap.timeline();
-    // let Split = new SplitText(".top-heading span", {
-    //     type: "chars", mask: "chars", autoSplit: true,
-    // });
-
-    // tl2.from(Split.chars, {
-    //     yPercent: 100,
-    //     autoAlpha: 0,
-    //     stagger: 0.09,
-    //     duration: 1,
-    //     ease: "power3.out",
-
-    // })
-
-    // let Split2 = new SplitText(".intro-text p, .work-status p, .joined_year span ", {
-    //     type: "lines", mask: "lines", autoSplit: true,
-    // })
-
-    // tl2.from(Split2.lines, {
-    //     yPercent: 100,
-    //     autoAlpha: 0,
-    //     stagger: 0.08,
-    //     duration: 1,
-    //     ease: "power3.out",
-    //     // onComplete: () => {
-    //     //     Split2.revert();
-    //     // }
-    // }, "0.5")
-
-    // tl2.from(".button-clip-wrapper button", {
-    //     y: 50,
-    //     opacity: 0,
-    //     autoAlpha: 0,
-    //     duration: 1,
-    //     ease: "power3.out",
-    // }, "0.5");
-
-    // tl2.from(".pfpImage img", {
-    //     scale: 0,
-    //     opacity: 0,
-    //     autoAlpha: 0,
-    //     duration: 1,
-    //     ease: "power4.out",
-    // }, "0.5");
 
 
 
-    // let Split3 = new SplitText(".animateHeadingPg2 h2 ", {
-    //     type: "chars", mask: "chars", autoSplit: true,
-    // })
 
-    // gsap.from(Split3.chars, {
-    //     yPercent: 100,
-    //     autoAlpha: 0,
-    //     stagger: 0.08,
-    //     duration: 1,
-    //     ease: "power4.out",
-    //     scrollTrigger: {
-    //         trigger: ".animateHeadingPg2",
-    //         start: "top 50%",
-    //         end: "bottom 60%",
-    //     },
-    // })
+    function AnimateSplitTextScroll({
+        elem,                // element selector, e.g. ".heading"
+        triggerElem,
+        type = "words",      // "lines" | "words" | "chars"
+        mask = null,         // "lines" | "words" | "chars" (optional)
+        start = "top 75%",   // scroll start position
+        end = "bottom top",  // scroll end position
+        once = true,         // play once only
+        markers = false,     // debug markers
+        duration = 1,        // animation duration
+        ease = "expo.out",   // easing
+        yPercent = 100,      // Y movement
+        opacity = 0,         // opacity start
+        stagger = 0.1        // stagger delay
+    }) {
+        if (!gsap || !ScrollTrigger || !SplitText) {
+            console.error("GSAP / SplitText / ScrollTrigger not loaded!");
+            return;
+        }
 
-    // let Split4 = new SplitText(".serviText2 p", {
-    //     type: "lines", linesClass: "line", mask: "lines", autoSplit: true,
-    //     onSplit: (self) => {
-    //         return gsap.from(self.lines, {
-    //             yPercent: 40,
-    //             autoAlpha: 0,
-    //             stagger: 0.08,
-    //             duration: 1,
-    //             ease: "power4.out",
-    //             scrollTrigger: {
-    //                 trigger: ".page2Child",
-    //                 start: "top 50%",
-    //                 end: "bottom 60%",
-    //             },
-    //             // onComplete: () => {
-    //             //     self.revert()
-    //             // }
-    //         })
-    //     }
-    // })
+        // Wait for fonts to load (avoid SplitText font bug)
+        document.fonts.ready.then(() => {
+            const split = SplitText.create(elem, {
+                type,
+                mask,
+                autoSplit: true,
+            });
+
+            gsap.from(split[type], {
+                yPercent,
+                opacity,
+                duration,
+                ease,
+                stagger,
+                scrollTrigger: {
+                    trigger: triggerElem,
+                    start,
+                    end,
+                    once,
+                    markers,
+                },
+
+            });
+        });
+    }
+
+    AnimateSplitTextScroll({
+        elem: ".animateHeadingPg2 h2",
+        type: "words",
+        mask: "words",
+        start: "top 75%",
+        end: "bottom top",
+        once: true,
+        ease: "expo.out",
+        stagger: 0.1,
+        triggerElem: ".animateHeadingPg2"
+    })
+
+    AnimateSplitTextScroll({
+        elem: ".serviText2 p",
+        type: "lines",
+        mask: "lines",
+        delay: 1,
+        start: "top 75%",
+        end: "bottom top",
+        once: true,
+        ease: "expo.out",
+        stagger: 0.1,
+        triggerElem: ".serviText2"
+    })
+
+    AnimateSplitTextScroll({
+        elem: ".animateHeadingPg3 p",
+        type: "words",
+        mask: "words",
+        start: "top 50%",
+        end: "bottom top",
+        once: true,
+        ease: "expo.out",
+        markers: false,
+        stagger: 0.1,
+        triggerElem: ".works"
+    })
+
+    AnimateSplitTextScroll({
+        elem: ".ProjectText2 p",
+        type: "lines",
+        mask: "lines",
+        delay: 1,
+        start: "top 60%",
+        end: "bottom top",
+        once: true,
+        markers: false,
+        ease: "expo.out",
+        stagger: 0.1,
+        triggerElem: ".ProjectText2"
+    })
+
+    AnimateSplitTextScroll({
+        elem: ".about-heading div h2",
+        type: "words",
+        mask: "words",
+        start: "top 50%",
+        end: "bottom top",
+        once: true,
+        ease: "expo.out",
+        markers: false,
+        stagger: 0.1,
+        triggerElem: ".about-heading"
+    })
+
+    AnimateSplitTextScroll({
+        elem: ".aboutChildDesciption p",
+        type: "lines",
+        mask: "lines",
+        delay: 1,
+        start: "top 60%",
+        end: "bottom top",
+        once: true,
+        markers: false,
+        ease: "expo.out",
+        stagger: 0.1,
+        triggerElem: ".aboutChild3"
+    })
+
+    AnimateSplitTextScroll({
+        elem: ".aboutChildDesciption2 p",
+        type: "lines",
+        mask: "lines",
+        delay: 1,
+        start: "top 60%",
+        end: "bottom top",
+        once: true,
+        markers: false,
+        ease: "expo.out",
+        stagger: 0.1,
+        triggerElem: ".aboutChild4"
+    })
 
 
-    //Services Pin section
-    // function setupPins(pinConfigs) {
-    //     pinConfigs.forEach(({ selector, start, end, pinSpacing, markers = false }) => {
-    //         gsap.to(selector, {
-    //             scrollTrigger: {
-    //                 trigger: selector,
-    //                 id: `pin-${selector.replace('.', '')}`,
-    //                 start,
-    //                 end,
-    //                 endTrigger: ".box3",
-    //                 pin: true,
-    //                 pinSpacing,
-    //                 markers,
-    //             },
-    //             duration: 1,
-    //             ease: "power3.out",
-    //         });
-    //     });
-    // }
+
+
+
+
+
+
+
+
+
 
 });
 
