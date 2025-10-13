@@ -13,72 +13,147 @@ document.addEventListener('DOMContentLoaded', function () {
 
     gsap.registerPlugin(SplitText, ScrollTrigger, ScrollToPlugin);
 
-    function revealSpan() {
-        document.querySelectorAll('.reveal').forEach((elem) => {
-            let parent = document.createElement("span");
-            let child = document.createElement("span");
+    // function revealSpan() {
+    //     document.querySelectorAll('.reveal').forEach((elem) => {
+    //         let parent = document.createElement("span");
+    //         let child = document.createElement("span");
 
-            parent.classList.add("parent");
-            child.classList.add("child");
+    //         parent.classList.add("parent");
+    //         child.classList.add("child");
 
-            child.innerHTML = elem.innerHTML;
-            parent.appendChild(child);
-            elem.innerHTML = "";
-            elem.appendChild(parent);
-        });
-    }
-    revealSpan();
+    //         child.innerHTML = elem.innerHTML;
+    //         parent.appendChild(child);
+    //         elem.innerHTML = "";
+    //         elem.appendChild(parent);
+    //     });
+    // }
+    // revealSpan();
 
     // Add any additional functionality or animations here  
-    let tl = gsap.timeline();
 
-    tl.from(".child span", {
-        opacity: 0,
-        x: "100",
-        duration: 2,
-        stagger: 0.2,
-        delay: 1,
-        ease: "Power3.easeInOut",
-    });
+    // let tl = gsap.timeline();
 
-    tl.to(".parent .child", {
-        y: "-100%",
-        duration: 1,
-        ease: "Circ.easeInOut",
-    });
+    // tl.from(".child span", {
+    //     opacity: 0,
+    //     x: "100",
+    //     duration: 2,
+    //     stagger: 0.2,
+    //     delay: 1,
+    //     ease: "Power3.easeInOut",
+    // });
+
+    // tl.to(".parent .child", {
+    //     y: "-100%",
+    //     duration: 1,
+    //     ease: "Circ.easeInOut",
+    // });
 
     // gsap.set(".top-heading span", { opacity: 0 });
 
-    tl.to(".loader1", {
-        height: "0",
-        duration: 1,
-        ease: "Power3.easeInOut",
-        onComplete: () => {
-            // hide the loader first
-            document.querySelector(".loader1").style.display = "none";
+    // tl.to(".loader1", {
+    //     height: "0",
+    //     duration: 1,
+    //     ease: "Power3.easeInOut",
+    //     onComplete: () => {
+    //         // hide the loader
+    //         document.querySelector(".loader1").style.display = "none";
+    //     }
+    // }, "-=0.5");
+    document.fonts.ready.then(() => {
 
-            gsap.set(".top-heading", { visibility: "visible" });
+        const tl = gsap.timeline();
 
-            // Split both spans (DEVIN & WILDZ) into words
-            const split = new SplitText(".top-heading span", {
-                type: "words",
-                mask: "words",
-            });
+        let Split = new SplitText('.Intro-heading h5', {
+            type: 'words',
+            mask: 'words',
+            autoSplit: true,
+        });
 
-            // Start from hidden / below
-            gsap.set(split.words, { yPercent: 100, autoAlpha: 0 });
+        tl.from(Split.words, {
+            xPercent: 100,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            delay: 1,
+            ease: 'Power3.easeInOut',
+        });
 
-            // Animate them in
-            gsap.to(split.words, {
-                yPercent: 0,
-                autoAlpha: 1,
-                stagger: 0.08,
+        tl.to(Split.words,
+            {
+                y: -100,
                 duration: 1.2,
-                ease: "power3.out",
-                immediateRender: false,
-            });
-        }
-    }, "-=0.5");
+                delay: 1.5,
+            }, "1"
+        );
+
+        let Split2 = new SplitText('.topHeading h5', {
+            type: 'words',
+            mask: 'words',
+            autoSplit: true,
+        });
+
+        tl.to(
+            Split2.words,
+            {
+                y: -100,
+                duration: 1.2,
+                delay: 1.5,
+            },
+            '1'
+        );
+
+        let Split3 = new SplitText('.loaderAnimation1 h5, .loaderAnimation1 p', {
+            type: 'words',
+            mask: 'words',
+            autoSplit: true,
+        });
+
+        tl.to(
+            Split3.words,
+            {
+                y: -100,
+                duration: 1.2,
+                delay: 1.5,
+            },
+            '1'
+        );
+
+        tl.to('.loader1', {
+            y: -100,
+            height: 0,
+            duration: 1.2,
+            onComplete: () => {
+                // hide the loader
+                document.querySelector(".loader1").style.display = "none";
+            }
+        });
+
+        const split4 = new SplitText('.top-heading span', {
+            type: 'chars',
+            mask: 'chars',
+            autoSplit: true,
+        });
+
+        tl.from(
+            split4.chars,
+            {
+                y: 200,
+                duration: 0.5,
+                opacity: 1,
+                stagger: 0.05,
+            },
+            '-=0.9'
+        );
+    });
+
+
+
+
+
+
+
+
+
 
 
     //Home Pg pin animation
@@ -226,6 +301,8 @@ document.addEventListener('DOMContentLoaded', function () {
             );
         });
     });
+
+
 
     function AnimateSplitTextScroll({
         elem,                // element selector, e.g. ".heading"
