@@ -64,8 +64,7 @@ body {
 .joined_year span {
     display: inline-block;
     line-height: 1;
-    font-kerning: none;
-    text-rendering: optimizeSpeed;
+    
 
 }
 
@@ -78,3 +77,6 @@ body {
     filter: grayscale(0%);
 }
 
+.top-heading{
+    visibility: hidden;
+}

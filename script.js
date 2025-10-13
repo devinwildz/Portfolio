@@ -47,14 +47,39 @@ document.addEventListener('DOMContentLoaded', function () {
         ease: "Circ.easeInOut",
     });
 
+    // gsap.set(".top-heading span", { opacity: 0 });
+
     tl.to(".loader1", {
         height: "0",
         duration: 1,
         ease: "Power3.easeInOut",
         onComplete: () => {
+            // hide the loader first
             document.querySelector(".loader1").style.display = "none";
+
+            gsap.set(".top-heading", { visibility: "visible" });
+
+            // Split both spans (DEVIN & WILDZ) into words
+            const split = new SplitText(".top-heading span", {
+                type: "words",
+                mask: "words",
+            });
+
+            // Start from hidden / below
+            gsap.set(split.words, { yPercent: 100, autoAlpha: 0 });
+
+            // Animate them in
+            gsap.to(split.words, {
+                yPercent: 0,
+                autoAlpha: 1,
+                stagger: 0.08,
+                duration: 1.2,
+                ease: "power3.out",
+                immediateRender: false,
+            });
         }
     }, "-=0.5");
+
 
     //Home Pg pin animation
     gsap.to("#page1", {
@@ -71,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
             invalidateOnRefresh: true,
         }
     });
+
 
 
     //menus animations
@@ -341,6 +367,9 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 
 
+
+
+
     //card Stack Animation
     function setupPins(pinConfigs) {
         pinConfigs.forEach(({ selector, start, end, pinSpacing, markers = false }) => {
@@ -448,12 +477,61 @@ document.addEventListener('DOMContentLoaded', function () {
                 start: "top 80%",
                 end: "bottom 60%",
                 scrub: 1,
-                markers: true,
             },
         }
     );
 
 
+    //Card pin section
+    const slides = gsap.utils.toArray(".project-detail");
+    const numberAnimated = document.querySelector(".number-animated");
+    let currentY = 0;
+    let targetY = 0;
+    const setY = gsap.quickSetter(numberAnimated, "yPercent");
+
+    const createScrollTrigger = ({ start, end, pinSpacing, markers }) => {
+        ScrollTrigger.create({
+            trigger: ".Project",
+            scrub: 0.2,
+            pin: ".number-counter",
+            anticipatePin: 1,
+            markers,
+            start,
+            end,
+            pinSpacing,
+        });
+    }
+
+    // ✨ Animate each slide (fade + y)
+    slides.forEach((slide, index) => {
+
+        // Trigger for number change
+        ScrollTrigger.create({
+            trigger: slide,
+            start: "top 20%",
+            end: "bottom 70%",
+            onEnter: () => setTarget(index),
+            onEnterBack: () => setTarget(index),
+
+        });
+    });
+
+    // 🧠 Set target index for number
+    function setTarget(index) {
+        targetY = -100 * index;
+    }
+
+    // 🚀 LERP Ticker for smooth animation
+    gsap.ticker.add(() => {
+        currentY += (targetY - currentY) * 0.1; // Smooth transition
+        setY(currentY);
+    });
+
+    createScrollTrigger({
+        start: "top top",
+        end: "bottom 80%", // Adjusted end point
+        pinSpacing: false, // Enable pinSpacing for desktop
+    });
 
 
 });
