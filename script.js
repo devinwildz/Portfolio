@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+    gsap.registerPlugin(SplitText, ScrollTrigger, ScrollToPlugin);
     //lenis scroll setup
     const lenis = new Lenis();
 
@@ -11,68 +13,23 @@ document.addEventListener('DOMContentLoaded', function () {
         lenis.raf(time * 1000); // Convert time from seconds to milliseconds
     });
 
-    gsap.registerPlugin(SplitText, ScrollTrigger, ScrollToPlugin);
 
-    // function revealSpan() {
-    //     document.querySelectorAll('.reveal').forEach((elem) => {
-    //         let parent = document.createElement("span");
-    //         let child = document.createElement("span");
-
-    //         parent.classList.add("parent");
-    //         child.classList.add("child");
-
-    //         child.innerHTML = elem.innerHTML;
-    //         parent.appendChild(child);
-    //         elem.innerHTML = "";
-    //         elem.appendChild(parent);
-    //     });
-    // }
-    // revealSpan();
-
-    // Add any additional functionality or animations here  
-
-    // let tl = gsap.timeline();
-
-    // tl.from(".child span", {
-    //     opacity: 0,
-    //     x: "100",
-    //     duration: 2,
-    //     stagger: 0.2,
-    //     delay: 1,
-    //     ease: "Power3.easeInOut",
-    // });
-
-    // tl.to(".parent .child", {
-    //     y: "-100%",
-    //     duration: 1,
-    //     ease: "Circ.easeInOut",
-    // });
-
-    // gsap.set(".top-heading span", { opacity: 0 });
-
-    // tl.to(".loader1", {
-    //     height: "0",
-    //     duration: 1,
-    //     ease: "Power3.easeInOut",
-    //     onComplete: () => {
-    //         // hide the loader
-    //         document.querySelector(".loader1").style.display = "none";
-    //     }
-    // }, "-=0.5");
     document.fonts.ready.then(() => {
 
         const tl = gsap.timeline();
+
 
         let Split = new SplitText('.Intro-heading h5', {
             type: 'words',
             mask: 'words',
             autoSplit: true,
+
         });
 
         tl.from(Split.words, {
-            xPercent: 100,
+            x: 100,
             opacity: 0,
-            duration: 1,
+            duration: 1.2,
             stagger: 0.2,
             delay: 1,
             ease: 'Power3.easeInOut',
@@ -82,8 +39,8 @@ document.addEventListener('DOMContentLoaded', function () {
             {
                 y: -100,
                 duration: 1.2,
-                delay: 1.5,
-            }, "1"
+                delay: 2,
+            }, "<"
         );
 
         let Split2 = new SplitText('.topHeading h5', {
@@ -97,9 +54,9 @@ document.addEventListener('DOMContentLoaded', function () {
             {
                 y: -100,
                 duration: 1.2,
-                delay: 1.5,
+                delay: 2,
             },
-            '1'
+            '<'
         );
 
         let Split3 = new SplitText('.loaderAnimation1 h5, .loaderAnimation1 p', {
@@ -113,17 +70,16 @@ document.addEventListener('DOMContentLoaded', function () {
             {
                 y: -100,
                 duration: 1.2,
-                delay: 1.5,
+                delay: 2,
             },
-            '1'
+            '<'
         );
 
         tl.to('.loader1', {
-            y: -100,
             height: 0,
             duration: 1.2,
             onComplete: () => {
-                // hide the loader
+
                 document.querySelector(".loader1").style.display = "none";
             }
         });
@@ -144,7 +100,9 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             '-=0.9'
         );
+
     });
+
 
 
 
