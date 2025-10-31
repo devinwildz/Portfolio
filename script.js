@@ -15,106 +15,62 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     document.fonts.ready.then(() => {
-
         const tl = gsap.timeline();
 
+        // Split text
+        const split1 = new SplitText('.Intro-heading h5', { type: 'words', mask: "words" });
+        const split2 = new SplitText('.topHeading h5', { type: 'words', mask: "words" });
+        const split3 = new SplitText('.loaderAnimation1 h5, .loaderAnimation1 p', { type: 'words', mask: "words" });
+        const split4 = new SplitText('.top-heading span', { type: 'chars', mask: "chars" });
 
-        let Split = new SplitText('.Intro-heading h5', {
-            type: 'words',
-            mask: 'words',
-            autoSplit: true,
 
-        });
+        // Show hidden text that tailwind set to invisible
+        // gsap.set('.Intro-heading h5, .topHeading h5, .loaderAnimation1 h5, .top-heading span ', { autoAlpha: 1 });
+        // Initial state
+        gsap.set(split1.words, { x: 300, y: 0, autoAlpha: 0 });
 
-        tl.from(Split.words, {
-            x: 100,
-            opacity: 0,
+        // Intro text in
+        tl.to(split1.words, {
+            x: 0,
+            autoAlpha: 1,
             duration: 1.2,
             stagger: 0.2,
-            delay: 1,
-            ease: 'Power3.easeInOut',
+            ease: 'Power3.easeInOut'
         });
 
-        tl.to(Split.words,
-            {
-                y: -100,
-                duration: 1.2,
-                delay: 2,
-            }, "<"
-        );
-
-        let Split2 = new SplitText('.topHeading h5', {
-            type: 'words',
-            mask: 'words',
-            autoSplit: true,
-        });
-
-        tl.to(
-            Split2.words,
-            {
-                y: -100,
-                duration: 1.2,
-                delay: 2,
-            },
-            '<'
-        );
-
-        let Split3 = new SplitText('.loaderAnimation1 h5, .loaderAnimation1 p', {
-            type: 'words',
-            mask: 'words',
-            autoSplit: true,
-        });
-
-        tl.to(
-            Split3.words,
-            {
-                y: -100,
-                duration: 1.2,
-                delay: 2,
-            },
-            '<'
-        );
-
-        tl.to('.loader1', {
-            height: 0,
+        // Move all text up
+        tl.to([split1.words, split2.words, split3.words], {
+            y: -100,
             duration: 1.2,
-            onComplete: () => {
-
-                document.querySelector(".loader1").style.display = "none";
-            }
+            ease: 'Power3.easeInOut'
         });
 
-        const split4 = new SplitText('.top-heading span', {
-            type: 'chars',
-            mask: 'chars',
-            autoSplit: true,
+        // Collapse loader
+        tl.to('.loader1', {
+            transformOrigin: 'top',
+            scaleY: 0,
+            duration: 1.2,
+            onComplete: () => document.querySelector(".loader1").style.display = "none"
         });
 
-        tl.from(
-            split4.chars,
-            {
-                y: 200,
-                duration: 0.5,
-                opacity: 1,
-                stagger: 0.05,
-            },
-            '-=0.9'
-        );
-
+        // Reveal main heading
+        tl.from(split4.chars, {
+            y: 200,
+            duration: 0.5,
+            opacity: 0,
+            stagger: 0.03
+        }, "-=0.9");
     });
 
 
 
 
 
-
-
-
-
-
-
-
     //Home Pg pin animation
+
+
+
+
     gsap.to("#page1", {
         y: 50,
         opacity: 0,
@@ -129,8 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
             invalidateOnRefresh: true,
         }
     });
-
-
 
     //menus animations
     const hamburger = document.querySelector(".hamburger");
